@@ -1,52 +1,52 @@
-app = "postgres-ha-example"
+# fly.toml app configuration file generated for geoipsrv-db on 2023-10-21T15:42:21+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
+app = "geoipsrv-db"
+primary_region = "ams"
 kill_signal = "SIGTERM"
-kill_timeout = 300
-services = []
+kill_timeout = "5m0s"
 
-[checks]
+[experimental]
+  enable_consul = true
 
-  [checks.pg]
-    grace_period = "30s"
-    interval = "15s"
-    method = "get"
-    path = "/flycheck/pg"
-    port = 5500
-    timeout = "10s"
-    type = "http"
-
-  [checks.role]
-    grace_period = "30s"
-    interval = "15s"
-    method = "get"
-    path = "/flycheck/role"
-    port = 5500
-    timeout = "10s"
-    type = "http"
-
-  [checks.vm]
-    grace_period = "1s"
-    interval = "1m"
-    method = "get"
-    path = "/flycheck/vm"
-    port = 5500
-    timeout = "10s"
-    type = "http"
+[build]
 
 [env]
   BACKEND_STORE = "consul"
   PRIMARY_REGION = "ord"
 
-[experimental]
-  allowed_public_ports = []
-  auto_rollback = false
-  enable_consul = true
-  private_network = true
-
-[metrics]
-  path = "/metrics"
-  port = 9187
-
 [[mounts]]
-  destination = "/data"
   source = "pg_data"
+  destination = "/data"
+
+[checks]
+  [checks.pg]
+    port = 5500
+    type = "http"
+    interval = "15s"
+    timeout = "10s"
+    grace_period = "30s"
+    method = "get"
+    path = "/flycheck/pg"
+  [checks.role]
+    port = 5500
+    type = "http"
+    interval = "15s"
+    timeout = "10s"
+    grace_period = "30s"
+    method = "get"
+    path = "/flycheck/role"
+  [checks.vm]
+    port = 5500
+    type = "http"
+    interval = "1m0s"
+    timeout = "10s"
+    grace_period = "1s"
+    method = "get"
+    path = "/flycheck/vm"
+
+[[metrics]]
+  port = 9187
+  path = "/metrics"

@@ -1,7 +1,7 @@
 version: "3.9"  # optional since v1.27.0
 services:
   consul:
-    image: consul
+    image: hashicorp/consul
     environment:
       CONSUL_LOG_LEVEL: warn
       CONSUL_LOCAL_CONFIG: '{"log_level": "info"}'
@@ -19,7 +19,8 @@ services:
     # links:
     #   - redis
   flypg:
-    build: .
+    build:
+      context: .
     links:
       - consul
     environment:

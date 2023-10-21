@@ -39,11 +39,11 @@ func InitConfig(filename string) (*Config, error) {
 		log.Fatalln("error cleaning filename", err)
 	}
 
-	// Detect if TimescaleDB is installed.
+	// Detect if ip4r is installed.
 	preloadShared := []string{}
-	tsEnabled, err := strconv.ParseBool(os.Getenv("TIMESCALEDB_ENABLED"))
-	if err == nil && tsEnabled {
-		preloadShared = append(preloadShared, "timescaledb")
+	ip4rEnabled, err := strconv.ParseBool(os.Getenv("IP4R_ENABLED"))
+	if err == nil && ip4rEnabled {
+		preloadShared = append(preloadShared, "ip4r")
 	}
 
 	fmt.Println("cluster spec filename", filename)
