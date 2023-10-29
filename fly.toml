@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for geoipsrv-db on 2023-10-21T15:42:21+02:00
+# fly.toml app configuration file generated for geo-ip-server-db on 2023-10-29T15:09:50+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "geoipsrv-db"
+app = "geo-ip-server-db"
 primary_region = "ams"
 kill_signal = "SIGTERM"
 kill_timeout = "5m0s"
@@ -15,7 +15,7 @@ kill_timeout = "5m0s"
 
 [env]
   BACKEND_STORE = "consul"
-  PRIMARY_REGION = "ord"
+  PRIMARY_REGION = "ams"
 
 [[mounts]]
   source = "pg_data"
