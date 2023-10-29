@@ -1,10 +1,10 @@
 # Geo IP server database
 
-This repo contains HA PostgreSQL instance suitable for deploying to [fly.io](https://fly.io) platform. It was forked from [fly-apps/postgres-ha](https://github.com/fly-apps/postgres-ha)* only to include ip4r extension, as the original repo had installed only postgis and timescaledb. Check this[README.md](https://github.com/fly-apps/postgres-ha#readme) for details.
+This repo contains HA PostgreSQL instance suitable for deploying to [fly.io](https://fly.io) platform. It was forked from [fly-apps/postgres-ha](https://github.com/fly-apps/postgres-ha)[1] only to include ip4r extension, as the original repo had installed only postgis and timescaledb. Check this[README.md](https://github.com/fly-apps/postgres-ha#readme) for details.
 
 This repo accompanies [Geo IP server](https://github.com/okulik/geo-ip-server) repo containing the API server code. Check the linke for firther details.
 
-* There's a [newer way]([https://github.com/fly-apps/postgres-flex) how to deploy HA POsthgreSQL instance to fly.io. It doesn't use [stolon](https://github.com/sorintlab/stolon) and [consul](https://www.consul.io) but [repmgr](http://www.repmgr.org) - worth checking.
+[1] There's a [newer way]([https://github.com/fly-apps/postgres-flex) how to deploy HA POsthgreSQL instance to fly.io. It doesn't use [stolon](https://github.com/sorintlab/stolon) and [consul](https://www.consul.io) but [repmgr](http://www.repmgr.org) - worth checking.
 
 ## Deploying PostgreSQL to fly.io
 
