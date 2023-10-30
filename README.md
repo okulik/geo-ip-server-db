@@ -20,11 +20,16 @@ Following that, run `fly secrets` to set required secrets.
  ```
  Remember to replace each PASSWORD with a proper, unique secret. Also, change `PRIMARY_REGION` inside fly.toml to your preferred region (currently set to Amsterdam).
 
- Create a volume of appropriate size, within the same region as the app (replace ams with your region):
+Create a volume of appropriate size, within the same region as the app (replace ams with your region):
  ```bash
  $ fly volumes create pg_data --region ams --size 10 # create 10 Gib volume for storage
 ```
 Answer with 'y' to the `Do you still want to use the volumes feature?` question.
+
+Almost done. To make things work with MaxMind Geolite2 City data, we need to increase instance's memory from 256 to 512 MiB.
+```bash
+fly scale memory 512
+```
 
 And finally, deploy the PostgreSQL server:
 ```bash
