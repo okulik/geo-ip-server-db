@@ -16,7 +16,7 @@ $ fly launch --no-deploy
 
 Following that, run `fly secrets` to set required secrets.
  ```bash
- $ fly secrets set SU_PASSWORD=<PASSWORD> REPL_PASSWORD=<PASSWORD> OPERATOR_PASSWORD=<PASSWORD>
+ $ fly secrets set SU_PASSWORD=<password1> REPL_PASSWORD=<password2> OPERATOR_PASSWORD=<password3>
  ```
  Remember to replace each PASSWORD with a proper, unique secret. Also, change `PRIMARY_REGION` inside fly.toml to your preferred region (currently set to Amsterdam).
 
