@@ -38,7 +38,6 @@ ADD /config/* /fly/
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates curl bash dnsutils vim-tiny procps jq haproxy \
-    postgresql-${PG_MAJOR}-ip4r \
     && apt autoremove -y \
     && echo 'Installing wal-g' \
     && curl -L https://github.com/wal-g/wal-g/releases/download/v${WALG_VERSION}/wal-g-pg-ubuntu-18.04-amd64 > /usr/local/bin/wal-g \
@@ -49,7 +48,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 COPY --from=flyutil /fly/bin/* /usr/local/bin/
 
 ENV ENV="/fly/shell-init"
-ENV IP4R_ENABLED=true
 
 EXPOSE 5432
 

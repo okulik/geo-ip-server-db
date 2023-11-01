@@ -39,8 +39,15 @@ func InitConfig(filename string) (*Config, error) {
 		log.Fatalln("error cleaning filename", err)
 	}
 
-	// Detect if ip4r is installed.
 	preloadShared := []string{}
+
+	// Detect if TimescaleDB is installed.
+	tsEnabled, err := strconv.ParseBool(os.Getenv("TIMESCALEDB_ENABLED"))
+	if err == nil && tsEnabled {
+		preloadShared = append(preloadShared, "timescaledb")
+	}
+
+	// Detect if ip4r is installed.
 	ip4rEnabled, err := strconv.ParseBool(os.Getenv("IP4R_ENABLED"))
 	if err == nil && ip4rEnabled {
 		preloadShared = append(preloadShared, "ip4r")
